@@ -1,6 +1,7 @@
 const express = require ('express')
 const morgan = require ("morgan")
 const cors = require ("cors")
+const path = require ("path")
 
 morgan.token('body', function getBody (req) {
     return JSON.stringify(req.body)
@@ -11,7 +12,8 @@ const app = express()
 app.use(express.json())
 app.use(morgan(':method :url :response-time :body'))
 app.use(cors())
-app.use(express.static("public"))
+app.use(express.static('build'))
+
 
 let persons = [
     {
@@ -40,6 +42,7 @@ let persons = [
 
 const generateId = () => Math.floor(Math.random() * 1000000000)
 
+app.get("/", (request,response) =>  response.sendFile(path.join(__dirname, 'build/index.html')))
 
 app.get("/api/persons", (request, response) => {
     response.json(persons)
