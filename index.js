@@ -42,7 +42,7 @@ let persons = [
 
 const generateId = () => Math.floor(Math.random() * 1000000000)
 
-app.get("/", (request,response) =>  response.sendFile(path.join(__dirname, 'build/index.html')))
+//app.get("/", (request,response) =>  response.sendFile(path.join(__dirname, 'build/index.html')))
 
 app.get("/api/persons", (request, response) => {
     response.json(persons)
