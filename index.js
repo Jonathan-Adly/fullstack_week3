@@ -41,10 +41,6 @@ let persons = [
 const generateId = () => Math.floor(Math.random() * 1000000000)
 
 
-app.get('/', (request, response) => {
-    response.send('<h1> Sanity check </h1>')
-})
-
 app.get("/api/persons", (request, response) => {
     response.json(persons)
 })
